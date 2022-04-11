@@ -4,8 +4,9 @@ import { Card, Icon } from "react-native-elements";
 import { CAMPSITES } from "../shared/campsites";
 import { COMMENTS } from "../shared/comments";
 
-function RenderCampsite({ props }) {
+function RenderCampsite(props) {
   const { campsite } = props;
+
   if (campsite) {
     return (
       <Card
@@ -79,7 +80,7 @@ class CampsiteInfo extends Component {
       (campsite) => campsite.id === campsiteId
     )[0];
     const comments = this.state.comments.filter(
-      (comment) => comment.campsiteIdmpsiteId == campsiteId
+      (comment) => comment.campsiteId === campsiteId
     );
     return (
       <ScrollView>
@@ -88,8 +89,7 @@ class CampsiteInfo extends Component {
           favorite={this.state.favorite}
           markFavorite={() => this.markFavorite()}
         />
-        ;
-        <RenderComments comments={comments} />;
+        <RenderComments comments={comments} />
       </ScrollView>
     );
   }
